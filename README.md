@@ -22,7 +22,7 @@ Follow these steps:
 - clone 
 - install dependencies: `npm install`
 - create a `.env` file or add the following environment variables in your hosting service:
-  - `ORIGIN, with the location of your frontend app (example, `ORIGIN=https://foobar.netlify.com`)
+  - `ORIGIN`, with the location of your frontend app (example, `ORIGIN=https://foobar.netlify.com`)
   - `PH_APP_API_KEY`: your app client_id used to authorize the app with the Product Hunt API (OAuth Client Only mode)
   - `PH_APP_API_SECRET`: your app client_secret used to authorize the app with the Product Hunt API (OAuth Client Only mode)
 - run the application: `npm run dev`
