@@ -8,12 +8,13 @@ Code using best practices (Linter, Environment Variables, error handling, clean 
 
 # This is only the server
 
-## Deployed live version: https://WIP.netlify.app/
+**Deployed live version**: https://WIP.netlify.app/
 
-## Backend server repo: https://github.com/hymced/technical_challenge_producthunt-server
-## Backend server API: https://technical_challenge_producthunt-server.adaptable.app/api/
+**Backend server repo**: https://github.com/hymced/technical_challenge_producthunt-server
 
-### Frontend client (React app) repo: https://github.com/hymced/technical_challenge_producthunt-client
+**Backend server API**: https://technical_challenge_producthunt-server.adaptable.app/api/
+
+**Frontend client (React app) repo**: https://github.com/hymced/technical_challenge_producthunt-client
 
 ## Instructions
 
