@@ -60,8 +60,6 @@ export const posts_list = <RequestHandler>(async (req, res, next) => {
 
     res.status(200).json(dataEx);
 
-    const arr = []
-    
   } catch(error) {
 
     if (error instanceof AxiosError) {
