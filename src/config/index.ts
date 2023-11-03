@@ -1,9 +1,15 @@
 import express, { Application } from 'express';
+import { config as dotenv } from 'dotenv';
 import logger from 'morgan';
-import cors from 'cors';
 import helmet from 'helmet';
+import cors from 'cors';
 
-const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
+// dotenv must be configured first
+// ES6 imports are hoisted, so imported modules will initialize (in order) before any of the current "imported" module initialization code gets to run 
+dotenv(); // .env default
+dotenv({ path: ".env.dev.env" });
+
+const FRONTEND_URL = process.env.ORIGIN || "http://localhost:4200";
 
 // Middleware configuration
 export default (app: Application) => {
@@ -26,4 +32,6 @@ export default (app: Application) => {
       origin: [FRONTEND_URL],
     })
   );
+  // or manually on a per request basis with
+  // res.header("Access-Control-Allow-Origin", "*");
 };
