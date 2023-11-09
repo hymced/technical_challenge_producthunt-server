@@ -32,7 +32,7 @@ export const posts_list = <RequestHandler>(async (req, res, next) => {
   try {
 
     await startConditionalChaining();
-    const data = await postsExternalService.getPostsData();
+    const data = await postsExternalService.getPostsData(<string>req.query.date);
 
     type Data = typeof data;
     type DataNewOnly = {

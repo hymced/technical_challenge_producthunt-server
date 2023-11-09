@@ -11,21 +11,29 @@ class PostsExternalService {
     //
   }
 
-  getPostsData() {
+  getPostsData(dateString: string) {
     const graphQLClient = new GraphQLClient(this.PH_API_GRAPHQL, {
       headers: {
         authorization: 'Bearer ' + credentials.PH_APP_CLIENT_CREDENTIALS_TOKEN
       },
     });
 
-    const dateString: string = "2023-10-30T00:00:00Z" // API expects DateTime (ISO-8601 encoded UTC date string) // max 20 posts per page!
+    // const dateString: string = "2023-10-30T00:00:00Z" // API expects DateTime (ISO-8601 encoded UTC date string) // max 20 posts per page!
+    // const dateNext = new Date((new Date(dateString)).getTime() + 1000*60*60*24)
+    if (!dateString) {
+      const dateYesterday = new Date();
+      dateYesterday.setDate(dateYesterday.getDate() - 1);
+      dateString = dateYesterday.toISOString();
+    }
+    const dateNext = new Date(dateString)
+    dateNext.setDate(dateNext.getDate() + 1)
 
     const queryDocument = gql`
-      query GetPostsPageByDate($date: DateTime!, $afterCursor: String = "") {
+      query GetPostsPageByDate($date: DateTime!, $dateNext: DateTime!, $afterCursor: String = "") {
         posts(
           first: 20
-          postedAfter: "2023-10-25T00:00:00Z",
-          postedBefore: $date,
+          postedAfter: $date,
+          postedBefore: $dateNext,
           order: NEWEST
           after: $afterCursor
         ) {
@@ -90,7 +98,7 @@ class PostsExternalService {
       }
     };
 
-    return graphQLClient.request<Data>(queryDocument, {date: dateString, afterCursor: ""});
+    return graphQLClient.request<Data>(queryDocument, {date: dateString, dateNext: dateNext, afterCursor: ""});
   }
 
 }

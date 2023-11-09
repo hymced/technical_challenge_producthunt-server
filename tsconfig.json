@@ -119,7 +119,9 @@
 
   "exclude": [
     "node_modules",
-    "*.docu[0-9]*.ts"
+    "**/*.docu[0-9].ts", // does not work
+    "**/*.docu[0-9]*.ts", // does not work
+    "**/*.docu*.ts", // ok, 0 or more
   ],
 
 }
