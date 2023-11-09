@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rimraf ./dist",
-    "start": "cross-env NODE_ENV=production ./dist/server.js",
+    "start": "cross-env NODE_ENV=production node ./dist/server.js",
     "dev": "cross-env NODE_ENV=development nodemon ./src/server.ts"
   },
   "keywords": [],
